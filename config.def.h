@@ -46,6 +46,7 @@ static const Layout layouts[] = {
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
+	{ NULL,       NULL },
 };
 
 /* key definitions */
@@ -99,6 +100,9 @@ static Key keys[] = {
 	TAGKEYS(                17,                    7)                 // 8
 	TAGKEYS(                18,                    8)                 // 9
 	{ MODKEY|ShiftMask,     24,    quit,           {0} },             // q
+
+	{ MODKEY|ShiftMask,		59,		cyclelayout,	{.i = -1 } },		// comma
+	{ MODKEY|ShiftMask,		60,		cyclelayout,    {.i = +1 } },		// period
 };
 
 /* button definitions */
