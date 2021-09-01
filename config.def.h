@@ -12,10 +12,30 @@ static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
+/*	GRUVBOX COLORS	*/
+static const char col_bg0[]			= "#1d2021";
+static const char col_bg1[]			= "#3c3836";
+static const char col_bg2[]			= "#504945";
+static const char col_bg3[]			= "#665c54";
+static const char col_bg4[]			= "#7c6f64";
+
+static const char col_fg0[]			= "#fbf1c7";
+static const char col_fg1[]			= "#ebdbb2";
+static const char col_fg2[]			= "#d5c4a1";
+static const char col_fg3[]			= "#bdae93";
+static const char col_fg4[]			= "#a89984";
+
+static const char col_red[]			= "#cc241d";
+static const char col_green[]		= "#98971a";
+static const char col_yellow[]		= "#d79921";
+static const char col_blue[]		= "#458588";
+static const char col_purple[]		= "#b16286";
+static const char col_aqua[]		= "#689d6a";
+
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+	[SchemeNorm] = { col_fg2,   col_bg0,   col_bg1 },
+	[SchemeSel]  = { col_fg0,   col_bg0,   col_bg4  },
 };
 
 /* tagging */
@@ -66,6 +86,8 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
+
+static const char *menucmd[] = { "dmenu_run", NULL };
 
 static Key keys[] = {
 	/* modifier             key    function        argument */
@@ -123,5 +145,7 @@ static Button buttons[] = {
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
+
+	{ ClkStatusText,        0,              Button1,        spawn,          {.v = menucmd } },
 };
 
