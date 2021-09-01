@@ -1,6 +1,6 @@
 void
 gaplessgrid(Monitor *m) {
-	unsigned int n, cols, rows, cn, rn, i, cx, cy, cw, ch;
+	unsigned int n, cols, rows, cn, rn, i, cx, cy, cw, ch, bw;
 	Client *c;
 
 	for(n = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), n++) ;
@@ -15,6 +15,11 @@ gaplessgrid(Monitor *m) {
 		cols = 2;
 	rows = n/cols;
 
+	if (n == 1)
+		bw = 0;
+	else
+		bw = borderpx;
+
 	/* window geometries */
 	cw = cols ? m->ww / cols : m->ww;
 	cn = 0; /* current column number */
@@ -25,7 +30,7 @@ gaplessgrid(Monitor *m) {
 		ch = rows ? m->wh / rows : m->wh;
 		cx = m->wx + cn*cw;
 		cy = m->wy + rn*ch;
-		resize(c, cx, cy, cw - 2 * c->bw, ch - 2 * c->bw, False, 0);
+		resize(c, cx, cy, cw - 2 * c->bw, ch - 2 * c->bw, bw, False);
 		rn++;
 		if(rn >= rows) {
 			rn = 0;
