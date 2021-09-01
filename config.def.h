@@ -83,7 +83,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,     54,    killclient,     {0} },             // c
 	{ MODKEY,               28,    setlayout,      {.v = &layouts[0]} }, // t
 	{ MODKEY,               41,    setlayout,      {.v = &layouts[1]} }, // f
-	{ MODKEY,               58,    setlayout,      {.v = &layouts[2]} }, // m
+	{ MODKEY,				42,    setlayout,      {.v = &layouts[2]} }, // g
+	{ MODKEY,               58,    setlayout,      {.v = &layouts[3]} }, // m
 	{ MODKEY,               65,    setlayout,      {0} },             // space
 	{ MODKEY|ShiftMask,     65,    togglefloating, {0} },             // space
 	{ MODKEY,               19,    view,           {.ui = ~0 } },     // 0
