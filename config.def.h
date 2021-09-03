@@ -89,6 +89,8 @@ static const char *termcmd[]  = { "st", NULL };
 
 static const char *menucmd[] = { "dmenu_run", NULL };
 
+#include "selfrestart.c"
+
 static Key keys[] = {
 	/* modifier             key    function        argument */
 	{ MODKEY,               33,    spawn,          {.v = dmenucmd } }, // p
@@ -124,7 +126,8 @@ static Key keys[] = {
 	TAGKEYS(                16,                    6)                 // 7
 	TAGKEYS(                17,                    7)                 // 8
 	TAGKEYS(                18,                    8)                 // 9
-	{ MODKEY|ShiftMask,     24,    quit,           {0} },             // q
+    { MODKEY|ShiftMask,		22,		self_restart,	{0} },				// Backspace
+	{ MODKEY,				22,		quit,			{0} },				// Backspace
 
 	{ MODKEY|ShiftMask,		59,		cyclelayout,	{.i = -1 } },		// comma
 	{ MODKEY|ShiftMask,		60,		cyclelayout,    {.i = +1 } },		// period
