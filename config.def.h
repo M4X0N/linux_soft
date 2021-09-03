@@ -84,12 +84,10 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_bg0, "-nf", col_fg4, "-sb", col_bg0, "-sf", col_fg0, NULL };
 static const char *termcmd[]  = { "st", NULL };
 
-static const char *menucmd[] = { "dmenu_run", NULL };
-
-#include "selfrestart.c"
+static const char *smenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_bg2, "-nf", col_fg0, "-sb", col_bg0, "-sf", col_fg0, "-x", 1420, "-y", 16,"-z", 500, "-l", 40, NULL };
 
 static Key keys[] = {
 	/* modifier             key    function        argument */
@@ -126,8 +124,7 @@ static Key keys[] = {
 	TAGKEYS(                16,                    6)                 // 7
 	TAGKEYS(                17,                    7)                 // 8
 	TAGKEYS(                18,                    8)                 // 9
-    { MODKEY|ShiftMask,		22,		self_restart,	{0} },				// Backspace
-	{ MODKEY,				22,		quit,			{0} },				// Backspace
+	{ MODKEY|ControlMask,	22,		quit,			{0} },				// Backspace
 
 	{ MODKEY|ShiftMask,		59,		cyclelayout,	{.i = -1 } },		// comma
 	{ MODKEY|ShiftMask,		60,		cyclelayout,    {.i = +1 } },		// period
@@ -149,6 +146,6 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 
-	{ ClkStatusText,        0,              Button1,        spawn,          {.v = menucmd } },
+	{ ClkStatusText,        0,              Button1,        spawn,          {.v = smenucmd } },
 };
 
