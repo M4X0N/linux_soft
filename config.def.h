@@ -98,9 +98,7 @@ static const char *smenucmd[] = { "echo", "MENU", "|", "dmenu", "-m", dmenumon, 
 static const char *killcmd[] = { "xkill", NULL };
 
 static const char *passmenucmd[] = { "passmenu", NULL };
-
-
-static const char *sscmd[]  = { "sh", "~/.scripts/screenshot.sh", NULL };
+static const char *sscmd[]  = { "screenshot", NULL };
 //static const char *sscmd[]  = { "maim -u | xclip -selection clipboard -t image/png -i", NULL };
 
 static const char *rangercmd[]  = { "st", "ranger", NULL };
