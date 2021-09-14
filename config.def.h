@@ -103,8 +103,7 @@ static const char *sscmd[]  = { "screenshot", NULL };
 
 static const char *rangercmd[]  = { "st", "ranger", NULL };
 static const char *thunarcmd[]  = { "thunar", NULL };
-static const char *bravecmd[]	= { "brave", NULL };
-static const char *firefoxcmd[]	= { "firefox", NULL };
+static const char *browsercmd[]	= { "librewolf", NULL };
 
 static const char *topcmd[]  = { "st", "bpytop", NULL };
 
@@ -113,9 +112,9 @@ static Key keys[] = {
 	/* modifier             key    function        argument */
 	{ MODKEY|ControlMask, 	119,   spawn,		   {.v = topcmd } }, // Ctrl Win Delete
 
-	{ MODKEY,               33,    spawn,          {.v = dmenucmd } }, // p
 	{ MODKEY,				135,   spawn,          {.v = dmenucmd } }, // options key
-	{ MODKEY|ShiftMask,		33,    spawn,          {.v = passmenucmd } }, // P
+	{ MODKEY,				28,	   spawn,          {.v = browsercmd } }, // t
+	{ MODKEY,				33,    spawn,          {.v = passmenucmd } }, // p
 	{ MODKEY|ShiftMask,     36,    spawn,          {.v = termcmd } }, // Return
 	{ MODKEY,               26,    spawn,          {.v = rangercmd } }, // e
 	{ MODKEY|ShiftMask,		26,    spawn,          {.v = thunarcmd } }, // e
