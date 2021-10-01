@@ -92,9 +92,13 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_bg0, "-nf", col_fg0, "-sb", col_bg0, "-sf", col_0yellow, NULL };
-static const char *termcmd[]  = { "st", NULL };
 
-static const char *smenucmd[] = { "echo", "MENU", "|", "dmenu", "-m", dmenumon, "-fn", dmenufont, "-nb", col_bg0, "-nf", col_0blue, "-sb", col_0blue, "-sf", col_bg0, NULL };
+//Standart terminal
+static const char *termcmd[]  = { "st", NULL };
+//Compact terminal
+static const char *ctermcmd[]  = { "st", "-i", "-g", "120x40+400+200", NULL };
+
+static const char *smenucmd[] = { "smenu", NULL };
 static const char *killcmd[] = { "xkill", NULL };
 
 static const char *passmenucmd[] = { "passmenu", NULL };
@@ -103,9 +107,9 @@ static const char *sscmd[]  = { "screenshot", NULL };
 
 static const char *rangercmd[]  = { "st", "ranger", NULL };
 static const char *thunarcmd[]  = { "thunar", NULL };
-static const char *browsercmd[]	= { "librewolf", NULL };
+static const char *browsercmd[]	= { "waterfox", NULL };
 
-static const char *topcmd[]  = { "st", "bpytop", NULL };
+static const char *topcmd[]  = { "st", "-i", "-g", "200x55+50+50", "btop", NULL };
 
 
 static Key keys[] = {
@@ -113,9 +117,11 @@ static Key keys[] = {
 	{ MODKEY|ControlMask, 	119,   spawn,		   {.v = topcmd } }, // Ctrl Win Delete
 
 	{ MODKEY,				135,   spawn,          {.v = dmenucmd } }, // options key
-	{ MODKEY,				28,	   spawn,          {.v = browsercmd } }, // t
+	{ ShiftMask,			135,   spawn,          {.v = smenucmd } }, // options key
+	{ MODKEY|ShiftMask,		28,	   spawn,          {.v = browsercmd } }, // t
 	{ MODKEY,				33,    spawn,          {.v = passmenucmd } }, // p
-	{ MODKEY|ShiftMask,     36,    spawn,          {.v = termcmd } }, // Return
+	{ MODKEY,				36,    spawn,          {.v = ctermcmd } }, // Return
+	{ MODKEY|ShiftMask,     36,    spawn,          {.v = termcmd } }, // Shift-Return
 	{ MODKEY,               26,    spawn,          {.v = rangercmd } }, // e
 	{ MODKEY|ShiftMask,		26,    spawn,          {.v = thunarcmd } }, // e
 
@@ -126,8 +132,8 @@ static Key keys[] = {
 	{ MODKEY,               40,    incnmaster,     {.i = -1 } },      // d
 	{ MODKEY,               43,    setmfact,       {.f = -0.05} },    // h
 	{ MODKEY,               46,    setmfact,       {.f = +0.05} },    // l
-	{ MODKEY,               36,    zoom,           {0} },             // Return
-	{ MODKEY,               23,    view,           {0} },             // Tab
+	{ MODKEY,               23,    zoom,           {0} },             // Tab // here was Return
+//	{ MODKEY,               23,    view,           {0} },             // Tab
 	{ MODKEY|ShiftMask,     54,    killclient,     {0} },             // c
 	{ MODKEY,               28,    setlayout,      {.v = &layouts[0]} }, // t
 	{ MODKEY,               41,    setlayout,      {.v = &layouts[1]} }, // f
