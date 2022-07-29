@@ -5,8 +5,11 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "iosevika:pixelsize=14:antialias=true:autohint=true" };
-static const char dmenufont[]       = "iosevka:pixelsize=14:antialias=true:autohint=true";
+static const char buttonbar[]       = "[menu]";
+//static const char *fonts[]          = { "iosevika:pixelsize=14:antialias=true:autohint=true" };
+static const char *fonts[]          = { "monospace:size=14" };
+//static const char dmenufont[]       = "iosevka:pixelsize=14:antialias=true:autohint=true";
+static const char dmenufont[]       = "monospace:size=14";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -171,6 +174,7 @@ static Key keys[] = {
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static Button buttons[] = {
 	/* click                event mask      button          function        argument */
+	{ ClkButton,		0,		Button1,	spawn,		{.v = dmenucmd } }, // statusbutton
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
