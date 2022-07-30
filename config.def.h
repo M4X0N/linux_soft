@@ -1,50 +1,23 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int snap      = 32;       /* snap pixel */
-static const int showbar            = 1;        /* 0 means no bar */
-static const int topbar             = 1;        /* 0 means bottom bar */
-static const char buttonbar[]       = "[menu]";
-static const char *fonts[]          = { "monospace:size=14" };
-static const char dmenufont[]		= "monospace:size=14";
-
-static const char col_gray1[]		= "#222222";
-static const char col_gray2[]		= "#444444";
-static const char col_gray3[]		= "#bbbbbb";
-static const char col_gray4[]		= "#eeeeee";
-static const char col_cyan[]		= "#005577";
-/*	GRUVBOX COLORS	*/
-static const char col_bg0[]		= "#282828";
-static const char col_bg1[]		= "#3c3836";
-static const char col_bg2[]		= "#504945";
-static const char col_bg3[]		= "#665c54";
-static const char col_bg4[]		= "#7c6f64";
-
-static const char col_fg0[]		= "#fbf1c7";
-static const char col_fg1[]		= "#ebdbb2";
-static const char col_fg2[]		= "#d5c4a1";
-static const char col_fg3[]		= "#bdae93";
-static const char col_fg4[]		= "#a89984";
-// Pale
-static const char col_red[]		= "#cc241d";
-static const char col_green[]		= "#98971a";
-static const char col_yellow[]		= "#d79921";
-static const char col_blue[]		= "#458588";
-static const char col_purple[]		= "#b16286";
-static const char col_aqua[]		= "#689d6a";
-// Bright
-static const char col_0red[]		= "#fb4934";
-static const char col_0green[]		= "#b8bb26";
-static const char col_0yellow[]		= "#fabd2f";
-static const char col_0blue[]		= "#83a598";
-static const char col_0purple[]		= "#d3869b";
-static const char col_0aqua[]		= "#8ec07c";
-
-static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { col_fg0,   col_bg0,   col_bg1 },
-	[SchemeSel]  = { col_0yellow,   col_bg0,   col_bg4  },
+static unsigned int borderpx  = 1;        /* border pixel of windows */
+static unsigned int snap      = 32;       /* snap pixel */
+static int showbar            = 1;        /* 0 means no bar */
+static int topbar             = 1;        /* 0 means bottom bar */
+static char font[]            = "monospace:size=12";
+static char dmenufont[]       = "monospace:size=12";
+static const char *fonts[]          = { font };
+static char normbgcolor[]           = "#222222";
+static char normbordercolor[]       = "#444444";
+static char normfgcolor[]           = "#bbbbbb";
+static char selfgcolor[]            = "#eeeeee";
+static char selbordercolor[]        = "#005577";
+static char selbgcolor[]            = "#005577";
+static char *colors[][3] = {
+       /*               fg           bg           border   */
+       [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
+       [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
 };
 
 /* tagging */
@@ -66,9 +39,9 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
-static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
+static float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
+static int nmaster     = 1;    /* number of clients in master area */
+static int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 #include "gaplessgrid.c"
@@ -94,7 +67,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_bg0, "-nf", col_fg0, "-sb", col_bg0, "-sf", col_0yellow, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 
 //Standart terminal
 static const char *termcmd[]  = { "st", NULL };
@@ -110,11 +83,31 @@ static const char *browsercmd[]	= { "librewolf", NULL };
 
 static const char *topcmd[]  = { "st", "btop", NULL };
 
+/*
+ * Xresources preferences to load at startup
+ */
+ResourcePref resources[] = {
+		{ "font",               STRING,  &font },
+		{ "dmenufont",          STRING,  &dmenufont },
+		{ "normbgcolor",        STRING,  &normbgcolor },
+		{ "normbordercolor",    STRING,  &normbordercolor },
+		{ "normfgcolor",        STRING,  &normfgcolor },
+		{ "selbgcolor",         STRING,  &selbgcolor },
+		{ "selbordercolor",     STRING,  &selbordercolor },
+		{ "selfgcolor",         STRING,  &selfgcolor },
+		{ "borderpx",          	INTEGER, &borderpx },
+		{ "snap",      		INTEGER, &snap },
+		{ "showbar",          	INTEGER, &showbar },
+		{ "topbar",          	INTEGER, &topbar },
+		{ "nmaster",          	INTEGER, &nmaster },
+		{ "resizehints",       	INTEGER, &resizehints },
+		{ "mfact",     	 	FLOAT,   &mfact },
+};
+
 
 static Key keys[] = {
 	/* modifier             key    function        argument */
 	{ MODKEY|ControlMask, 	119,   spawn,		   {.v = topcmd } }, // Ctrl Win Delete
-
 	{ MODKEY,		135,   spawn,          {.v = dmenucmd } }, // options key
 	{ MODKEY|ShiftMask,	28,    spawn,          {.v = browsercmd } }, // t
 	{ MODKEY|ShiftMask,     36,    spawn,          {.v = termcmd } }, // Shift-Return
