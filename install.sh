@@ -1,15 +1,20 @@
 #!/bin/bash
-# Additional wrapper to
+
+compfiles=("config.h"
+	   "drw.o"
+	   "dwm"
+	   "dwm.o"
+   	   "util.o")
+
 function clean
 {
-	echo "Cleaning"
-	2>/dev/null 1>/dev/null rm config.h &
-	2>/dev/null 1>/dev/null rm drw.o &
-	2>/dev/null 1>/dev/null rm dwm &
-	2>/dev/null 1>/dev/null rm dwm.o &
-	2>/dev/null 1>/dev/null rm util.o &
+	for file in "${compfiles[@]}"; do
+		if [ -f $file ]; then
+			echo "Removing $file"
+			sudo 2>/dev/null 1>/dev/null rm $file
+		fi
+	done
 }
-
 
 echo "Started"
 
