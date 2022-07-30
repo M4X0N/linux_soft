@@ -1,14 +1,19 @@
 #!/bin/bash
 # Additional wrapper to
+function clean
+{
+	echo "Cleaning"
+	2>/dev/null 1>/dev/null rm config.h &
+	2>/dev/null 1>/dev/null rm drw.o &
+	2>/dev/null 1>/dev/null rm dwm &
+	2>/dev/null 1>/dev/null rm dwm.o &
+	2>/dev/null 1>/dev/null rm util.o &
+}
+
+
 echo "Started"
 
-echo "Cleaning"
-2>/dev/null 1>/dev/null rm config.h &
-2>/dev/null 1>/dev/null rm drw.o &
-2>/dev/null 1>/dev/null rm dwm &
-2>/dev/null 1>/dev/null rm dwm.o &
-2>/dev/null 1>/dev/null rm util.o &
-
+clean
 while getopts 'imu' OPTION; do
   case "$OPTION" in
     i)
@@ -31,11 +36,5 @@ while getopts 'imu' OPTION; do
 done
 shift "$(($OPTIND -1))"
 
-echo "Cleaning"
-2>/dev/null 1>/dev/null rm config.h &
-2>/dev/null 1>/dev/null rm drw.o &
-2>/dev/null 1>/dev/null rm dwm &
-2>/dev/null 1>/dev/null rm dwm.o &
-2>/dev/null 1>/dev/null rm util.o &
-
+clean
 echo "Finished"
