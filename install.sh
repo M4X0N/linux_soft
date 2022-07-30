@@ -13,7 +13,7 @@ while getopts 'imu' OPTION; do
   case "$OPTION" in
     i)
       echo "Make and install"
-      make && sudo make install
+      make && sudo make clean install
       ;;
     m)
       echo "Make only"

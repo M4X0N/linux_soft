@@ -157,6 +157,7 @@ typedef struct {
 	void *dst;
 } ResourcePref;
 
+
 /* function declarations */
 static void applyrules(Client *c);
 static int applysizehints(Client *c, int *x, int *y, int *w, int *h, int *bw, int interact);
@@ -214,7 +215,7 @@ static void run(void);
 static void scan(void);
 static int sendevent(Client *c, Atom proto);
 static void sendmon(Client *c, Monitor *m);
-static void setclientstat(Client *c, long state);
+static void setclientstate(Client *c, long state);
 static void setfocus(Client *c);
 static void setfullscreen(Client *c, int fullscreen);
 static void setlayout(const Arg *arg);
@@ -222,11 +223,11 @@ static void setmfact(const Arg *arg);
 static void setup(void);
 static void seturgent(Client *c, int urg);
 static void showhide(Client *c);
-static void sigchld(int uused);
-static void sighup(int unsed);
-static void sigterm(int uused);
+static void sigchld(int unused);
+static void sighup(int unused);
+static void sigterm(int unused);
 static void spawn(const Arg *arg);
-static void tag(const Arg*arg);
+static void tag(const Arg *arg);
 static void tagmon(const Arg *arg);
 static void tile(Monitor *);
 static void togglebar(const Arg *arg);
@@ -2314,7 +2315,6 @@ zoom(const Arg *arg)
 			return;
 	pop(c);
 }
-
 
 void
 resource_load(XrmDatabase db, char *name, enum resource_type rtype, void *dst)
