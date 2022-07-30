@@ -9,24 +9,25 @@ static const char buttonbar[]       = "[menu]";
 //static const char *fonts[]          = { "iosevika:pixelsize=14:antialias=true:autohint=true" };
 static const char *fonts[]          = { "monospace:size=14" };
 //static const char dmenufont[]       = "iosevka:pixelsize=14:antialias=true:autohint=true";
-static const char dmenufont[]       = "monospace:size=14";
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
-/*	GRUVBOX COLORS	*/
-static const char col_bg0[]			= "#282828";
-static const char col_bg1[]			= "#3c3836";
-static const char col_bg2[]			= "#504945";
-static const char col_bg3[]			= "#665c54";
-static const char col_bg4[]			= "#7c6f64";
+static const char dmenufont[]		= "monospace:size=14";
 
-static const char col_fg0[]			= "#fbf1c7";
-static const char col_fg1[]			= "#ebdbb2";
-static const char col_fg2[]			= "#d5c4a1";
-static const char col_fg3[]			= "#bdae93";
-static const char col_fg4[]			= "#a89984";
+static const char col_gray1[]		= "#222222";
+static const char col_gray2[]		= "#444444";
+static const char col_gray3[]		= "#bbbbbb";
+static const char col_gray4[]		= "#eeeeee";
+static const char col_cyan[]		= "#005577";
+/*	GRUVBOX COLORS	*/
+static const char col_bg0[]		= "#282828";
+static const char col_bg1[]		= "#3c3836";
+static const char col_bg2[]		= "#504945";
+static const char col_bg3[]		= "#665c54";
+static const char col_bg4[]		= "#7c6f64";
+
+static const char col_fg0[]		= "#fbf1c7";
+static const char col_fg1[]		= "#ebdbb2";
+static const char col_fg2[]		= "#d5c4a1";
+static const char col_fg3[]		= "#bdae93";
+static const char col_fg4[]		= "#a89984";
 // Pale
 static const char col_red[]			= "#cc241d";
 static const char col_green[]		= "#98971a";
