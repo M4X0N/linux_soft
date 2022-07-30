@@ -74,7 +74,8 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
+//static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL };
 
 //Standart terminal
 static const char *termcmd[]  = { "st", NULL };
@@ -113,13 +114,13 @@ ResourcePref resources[] = {
 
 
 static Key keys[] = {
-	/* modifier             key    function        argument */
-	{ MODKEY|ControlMask, 	119,   spawn,		   {.v = topcmd } }, // Ctrl Win Delete
-	{ MODKEY,		135,   spawn,          {.v = dmenucmd } }, // options key
-	{ MODKEY|ShiftMask,	28,    spawn,          {.v = browsercmd } }, // t
-	{ MODKEY|ShiftMask,     36,    spawn,          {.v = termcmd } }, // Shift-Return
-	{ MODKEY,               26,    spawn,          {.v = rangercmd } }, // e
-	{ MODKEY|ShiftMask,	26,    spawn,          {.v = thunarcmd } }, // e
+	/* modifier		key	function	argument */
+	{ MODKEY|ControlMask, 	119,	spawn,		{.v = topcmd } }, // Ctrl Win Delete
+	{ MODKEY,		135,	spawn,          {.v = dmenucmd } }, // options key
+	{ MODKEY|ShiftMask,	28,	spawn,          {.v = browsercmd } }, // t
+	{ MODKEY|ShiftMask,     36,	spawn,          {.v = termcmd } }, // Shift-Return
+	{ MODKEY,               26,	spawn,          {.v = rangercmd } }, // e
+	{ MODKEY|ShiftMask,	26,	spawn,          {.v = thunarcmd } }, // e
 
 	{ MODKEY,               56,    togglebar,      {0} },             // b
 	{ MODKEY,               44,    focusstack,     {.i = +1 } },      // j
