@@ -6,9 +6,7 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char buttonbar[]       = "[menu]";
-//static const char *fonts[]          = { "iosevika:pixelsize=14:antialias=true:autohint=true" };
 static const char *fonts[]          = { "monospace:size=14" };
-//static const char dmenufont[]       = "iosevka:pixelsize=14:antialias=true:autohint=true";
 static const char dmenufont[]		= "monospace:size=14";
 
 static const char col_gray1[]		= "#222222";
@@ -29,7 +27,7 @@ static const char col_fg2[]		= "#d5c4a1";
 static const char col_fg3[]		= "#bdae93";
 static const char col_fg4[]		= "#a89984";
 // Pale
-static const char col_red[]			= "#cc241d";
+static const char col_red[]		= "#cc241d";
 static const char col_green[]		= "#98971a";
 static const char col_yellow[]		= "#d79921";
 static const char col_blue[]		= "#458588";
@@ -97,18 +95,13 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_bg0, "-nf", col_fg0, "-sb", col_bg0, "-sf", col_0yellow, NULL };
-static const char *qmenucmd[] = { "qmenu", NULL };
 
 //Standart terminal
 static const char *termcmd[]  = { "st", NULL };
-//Compact terminal
-static const char *ctermcmd[]  = { "st", "-i", "-g", "120x40+400+200", NULL };
 
 //static const char *smenucmd[] = { "smenu", NULL };
 static const char *killcmd[] = { "xkill", NULL };
 
-static const char *passmenucmd[] = { "passmenu", NULL };
-static const char *sscmd[]  = { "screenshot", NULL };
 //static const char *sscmd[]  = { "maim -u | xclip -selection clipboard -t image/png -i", NULL };
 
 static const char *rangercmd[]  = { "st", "ranger", NULL };
@@ -116,18 +109,14 @@ static const char *thunarcmd[]  = { "thunar", NULL };
 static const char *browsercmd[]	= { "librewolf", NULL };
 
 static const char *topcmd[]  = { "st", "btop", NULL };
-// static const char *topcmd[]  = { "st", "-i", "-g", "200x45+70+50", "btop", NULL };
 
 
 static Key keys[] = {
 	/* modifier             key    function        argument */
 	{ MODKEY|ControlMask, 	119,   spawn,		   {.v = topcmd } }, // Ctrl Win Delete
 
-	{ MODKEY,		135,   spawn,          {.v = qmenucmd } }, // options key
-	{ ShiftMask,		135,   spawn,          {.v = dmenucmd } }, // options key
+	{ MODKEY,		135,   spawn,          {.v = dmenucmd } }, // options key
 	{ MODKEY|ShiftMask,	28,    spawn,          {.v = browsercmd } }, // t
-	{ MODKEY,		33,    spawn,          {.v = passmenucmd } }, // p
-	{ MODKEY,		36,    spawn,          {.v = ctermcmd } }, // Return
 	{ MODKEY|ShiftMask,     36,    spawn,          {.v = termcmd } }, // Shift-Return
 	{ MODKEY,               26,    spawn,          {.v = rangercmd } }, // e
 	{ MODKEY|ShiftMask,	26,    spawn,          {.v = thunarcmd } }, // e
@@ -166,7 +155,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask|ControlMask,	22,		quit,			{0} },				// Backspace
 	{ MODKEY|ShiftMask,	22,		quit,			{1} },				// Backspace
 
-	{ NULL,			107,		spawn,          {.v = sscmd } }, // PrntScrn
+//	{ NULL,			107,		spawn,          {.v = sscmd } }, // PrntScrn
 	{ MODKEY|ShiftMask,	59,		cyclelayout,	{.i = -1 } },		// comma
 	{ MODKEY|ShiftMask,	60,		cyclelayout,    {.i = +1 } },		// period
 };
@@ -188,7 +177,6 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 
-	{ ClkStatusText,        0,              Button1,        spawn,          {.v = qmenucmd } },
 	{ ClkStatusText,        0,              Button3,        spawn,          {.v = killcmd } },
 };
 
