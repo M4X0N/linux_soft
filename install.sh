@@ -3,11 +3,11 @@
 echo "Started"
 
 echo "Cleaning"
-rm config.h &
-rm drw.o &
-rm dwm &
-rm dwm.o &
-rm util.o &
+2>/dev/null 1>/dev/null rm config.h &
+2>/dev/null 1>/dev/null rm drw.o &
+2>/dev/null 1>/dev/null rm dwm &
+2>/dev/null 1>/dev/null rm dwm.o &
+2>/dev/null 1>/dev/null rm util.o &
 
 while getopts 'imu' OPTION; do
   case "$OPTION" in
@@ -32,10 +32,10 @@ done
 shift "$(($OPTIND -1))"
 
 echo "Cleaning"
-rm config.h &
-rm drw.o &
-rm dwm &
-rm dwm.o &
-rm util.o &
+2>/dev/null 1>/dev/null rm config.h &
+2>/dev/null 1>/dev/null rm drw.o &
+2>/dev/null 1>/dev/null rm dwm &
+2>/dev/null 1>/dev/null rm dwm.o &
+2>/dev/null 1>/dev/null rm util.o &
 
 echo "Finished"
