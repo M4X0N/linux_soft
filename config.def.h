@@ -62,10 +62,25 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "st", NULL };
 
+/* quick-launch */
+static const char *browsercmd[]  = { "librewolf", NULL };
+static const char *topcmd[]  = { "st", "btop", NULL };
+static const char *mixercmd[]  = { "st", "pacmixer", NULL };
+
+
+/* kill */
+static const char *killcmd[]  = { "pkill", "xinit", NULL };
+
+
 static Key keys[] = {
 	/* modifier             key    function        argument */
 	{ MODKEY,               33,    spawn,          {.v = dmenucmd } }, // p
 	{ MODKEY|ShiftMask,     36,    spawn,          {.v = termcmd } }, // Return
+
+	{ MODKEY|ControlMask,   28,    spawn,          {.v = browsercmd } }, // Mod T
+	{ MODKEY|ControlMask,   58,    spawn,          {.v = mixercmd } }, // Mod M
+	{ MODKEY|ControlMask,   119,   spawn,          {.v = topcmd } }, // Ctrl Mod Delete
+
 	{ MODKEY,               56,    togglebar,      {0} },             // b
 	{ MODKEY,               44,    focusstack,     {.i = +1 } },      // j
 	{ MODKEY,               45,    focusstack,     {.i = -1 } },      // k
@@ -96,7 +111,8 @@ static Key keys[] = {
 	TAGKEYS(                16,                    6)                 // 7
 	TAGKEYS(                17,                    7)                 // 8
 	TAGKEYS(                18,                    8)                 // 9
-	{ MODKEY|ShiftMask,     24,    quit,           {0} },             // q
+	{ MODKEY,               22,    quit,           {0} },             // Mod+Backspace
+	{ MODKEY|ShiftMask,     22,    spawn,          {.v = killcmd } }, // Mod+Shift+Backspace
 };
 
 /*
