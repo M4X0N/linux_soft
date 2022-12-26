@@ -67,7 +67,6 @@ static const char *browsercmd[]  = { "librewolf", NULL };
 static const char *topcmd[]  = { "st", "btop", NULL };
 static const char *mixercmd[]  = { "st", "pacmixer", NULL };
 
-
 /* kill */
 static const char *killcmd[]  = { "pkill", "xinit", NULL };
 
