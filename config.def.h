@@ -72,7 +72,7 @@ static const char *killcmd[]  = { "pkill", "xinit", NULL };
 
 static Key keys[] = {
 	/* modifier             key    function        argument */
-	{ MODKEY,               33,    spawn,          {.v = dmenucmd } }, // p
+	{ MODKEY,               135,   spawn,          {.v = dmenucmd } }, // Mod Menu
 	{ MODKEY|ShiftMask,     36,    spawn,          {.v = termcmd } }, // Return
 
 	{ MODKEY|ShiftMask,     28,    spawn,          {.v = browsercmd } },    // Mod Shift T
