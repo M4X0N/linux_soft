@@ -22,7 +22,6 @@ static char *colors[][3] = {
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
@@ -76,9 +75,9 @@ static Key keys[] = {
 	{ MODKEY,               33,    spawn,          {.v = dmenucmd } }, // p
 	{ MODKEY|ShiftMask,     36,    spawn,          {.v = termcmd } }, // Return
 
-	{ MODKEY|ControlMask,   28,    spawn,          {.v = browsercmd } }, // Mod T
-	{ MODKEY|ControlMask,   58,    spawn,          {.v = mixercmd } }, // Mod M
-	{ MODKEY|ControlMask,   119,   spawn,          {.v = topcmd } }, // Ctrl Mod Delete
+	{ MODKEY|ShiftMask,     28,    spawn,          {.v = browsercmd } },    // Mod Shift T
+	{ MODKEY|ShiftMask,     58,    spawn,          {.v = mixercmd } },      // Mod Shift M
+	{ MODKEY|ControlMask,   119,   spawn,          {.v = topcmd } },        // Ctrl Mod Delete
 
 	{ MODKEY,               56,    togglebar,      {0} },             // b
 	{ MODKEY,               44,    focusstack,     {.i = +1 } },      // j
