@@ -66,6 +66,9 @@ static const char *browsercmd[]  = { "librewolf", NULL };
 static const char *topcmd[]  = { "st", "btop", NULL };
 static const char *mixercmd[]  = { "st", "pacmixer", NULL };
 
+/* auxillary features */
+static const char *screenshotcmd[]  = { "screenshot", NULL };
+
 /* kill */
 static const char *killcmd[]  = { "pkill", "xinit", NULL };
 
@@ -79,6 +82,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,     58,    spawn,          {.v = mixercmd } },      // Mod Shift M
 	{ MODKEY|ControlMask,   119,   spawn,          {.v = topcmd } },        // Ctrl Mod Delete
 
+	{ MODKEY,               107,   spawn,          {.v = screenshotcmd } }, // Mod PrintScreen
+                                                                            //
 	{ MODKEY,               56,    togglebar,      {0} },             // b
 	{ MODKEY,               44,    focusstack,     {.i = +1 } },      // j
 	{ MODKEY,               45,    focusstack,     {.i = -1 } },      // k
